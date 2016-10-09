@@ -1,5 +1,6 @@
-﻿#include <iostream>
+#include <iostream>
 #include <locale.h>
+// Отсутствует string.h
 using namespace std;
 
 int mystrcmp(const char * str1, const char * str2); //-функция сравнивает две строки, и, если строки равны возвращает 0, 
@@ -14,11 +15,11 @@ char * mystrrev(char * str); //-функция реверсирует строк
 int main()
 {
 	setlocale(LC_ALL, "rus");
-	int count = 10;
-	char* str1 = new char[count] {'h', 'e', 'l', 'l', 'o', ' ', 'u', 's', 'e', 'r', '\0'};
+	int count = 10; // count чего?
+	char* str1 = new char[count] {'h', 'e', 'l', 'l', 'o', ' ', 'u', 's', 'e', 'r', '\0'}; // это будет работать только в C++11
 	char* str2 = new char[count] {'h', 'e', 'l', 'l', 'o', ' ', 'u', 's', 'e', 'r', '\0'};
 	char* str = new char[count] {'h', 'e', 'l', 'l', 'o', ' ', 'u', 's', 'e', 'r', '\0'};
-	int number = 51;
+	int number = 51; // magic number
 	int selekt = 1;
 	do
 	{
@@ -48,23 +49,26 @@ int main()
 			break;
 		}
 	} while (selekt != 0);
-
+	// Нужно высвобождать память
 }
 
 int mystrcmp(const char * str1, const char * str2)
 {
+	// Вы должны были сами реализовать функцию сравнения, а не использовать готовую
 	int result = strcmp(str1, str2);
 	return result;
 }
 
 int StringToNumber(char * str)
 {
+	// Вы должны были сами реализовать функцию сравнения, а не использовать готовую
 	int number = atoi(str);	
 	return number;
 }
 
 char * NumberToString(int number)
 {
+	// Функция не работает на больших числах
 	char* str = new char[2];
 	str[0] = number + '0';
 	str[1] = 0;
@@ -73,12 +77,14 @@ char * NumberToString(int number)
 
 char * Uppercase(char * str1)
 {
+	// Вы вообще проверяли работу программы? Тут написана полная бессмыслица.
 	str1 -= '32';
 	return str1;
 }
 
 char * Lowercase(char * str1)
 {
+	// Вы вообще проверяли работу программы? Тут написана полная бессмыслица.
 	str1 += '32';
 	return str1;
 }
